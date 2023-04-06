@@ -193,7 +193,7 @@ export  class FruitBloxx extends Container {
       this.reelContainer.alpha = 1;
 
       GameMediator.emit(GameEvent.IntroComplete);
-      GameSounds.soundFadeIn(SoundTypes.Music, { loop: true, volume: 0.50 }, 2);
+     // GameSounds.soundFadeIn(SoundTypes.Music, { loop: true, volume: 0.50 }, 2);
    }
 
    public showAdditionalFreeSpins = (count: number) => {
@@ -387,7 +387,6 @@ export  class FruitBloxx extends Container {
       let result = this.data.spin_results.results_ex[this.spinIndex];
       this.reelContainer.setupReelState(result.spin_res, result.slot_config, this.spinIndex === 0);
       this.reelContainer.finishSpin();
-      this.setSpinIndex(this.spinIndex)
    }
 
    public freeSpinPopupShow = () => {
@@ -405,9 +404,5 @@ export  class FruitBloxx extends Container {
          this.spinIndex = 0;
          this.data = null;
       }, ReelsConfig.FreeSpinEndDelay);
-   }
-
-   public setSpinIndex(index: number) {
-      this.webSocketManager._sendRequest({ action: "set_freespins", counter: index })
    }
 }
