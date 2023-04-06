@@ -1,0 +1,68 @@
+Reel Light.png
+size:802,1104
+filter:Linear,Linear
+pma:true
+Lbox 1_00000
+bounds:2,924,158,178
+Lbox 1_00002
+bounds:2,744,158,178
+Lbox 1_00004
+bounds:162,924,158,178
+Lbox 1_00006
+bounds:2,564,158,178
+Lbox 1_00008
+bounds:162,744,158,178
+Lbox 1_00010
+bounds:322,924,158,178
+Lbox 1_00012
+bounds:2,384,158,178
+Lbox 1_00014
+bounds:162,564,158,178
+Lbox 1_00016
+bounds:322,744,158,178
+Lbox 1_00018
+bounds:482,924,158,178
+Lbox 1_00020
+bounds:2,204,158,178
+Lbox 1_00022
+bounds:162,384,158,178
+Lbox 1_00024
+bounds:322,564,158,178
+Lbox 1_00026
+bounds:482,744,158,178
+Lbox 1_00028
+bounds:642,924,158,178
+Lbox 1_00030
+bounds:2,24,158,178
+Lbox 1_00032
+bounds:162,204,158,178
+Lbox 1_00034
+bounds:322,384,158,178
+Lbox 1_00036
+bounds:482,564,158,178
+Lbox 1_00038
+bounds:642,744,158,178
+Lbox 1_00040
+bounds:162,24,158,178
+Lbox 1_00042
+bounds:322,204,158,178
+Lbox 1_00044
+bounds:482,384,158,178
+Lbox 1_00046
+bounds:642,564,158,178
+Lbox 1_00048
+bounds:322,24,158,178
+Lbox 1_00050
+bounds:482,204,158,178
+Lbox 1_00052
+bounds:642,384,158,178
+Lbox 1_00054
+bounds:482,24,158,178
+Lbox 1_00056
+bounds:642,204,158,178
+Lbox 1_00058
+bounds:642,24,158,178
+Lspin
+bounds:2,2,20,178
+offsets:69,0,158,178
+rotate:90
