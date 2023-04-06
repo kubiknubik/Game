@@ -2,7 +2,6 @@ import { PlayOptions, Sound, sound } from '@pixi/sound';
 import gsap from "gsap";
 import Config from "../Config";
 
-
 var mute: boolean = !Config.sound || Config.omitSounds;
 
 export default class GameSounds {
@@ -47,5 +46,4 @@ export default class GameSounds {
     sound.volumeAll = mute ? 0 : 1;
     return +!mute;
   }
-
 }

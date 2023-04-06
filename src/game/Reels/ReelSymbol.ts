@@ -3,13 +3,14 @@ import { Spine } from 'pixi-spine';
 import Config from './ReelsConfig'
 import { GameMediator } from "../mediator/Mediator";
 import { GameEvent } from "../events/Events";
-import { AnimationName, AnimationType } from "../types/enums";
+import { AnimationName, AnimationType, SoundTypes } from "../types/enums";
 import { getDisplayAmount, getSpineData } from "../core/helpers";
 import gsap from "gsap";
 import { Container } from "pixi.js";
 import GameFonts from "../core/Fonts";
 import { getStaticTexture } from "../core/helpers";
 import { SymbolData, SymbolState } from "../types/GameTypes";
+import GameSounds from "../GameSounds";
 
 export class ReelSymbol extends Container {
 
@@ -36,6 +37,7 @@ export class ReelSymbol extends Container {
 
       this.symbol.on("click",()=>{ 
          this.state.isWinSymbol = true;
+         GameSounds.playSound(SoundTypes.ReelStart);
          this.setWinAnimation();
        }) 
    }

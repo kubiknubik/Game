@@ -3,12 +3,30 @@
   <head>
     <meta charset="UTF-8">
     <title>Pixi TypeScript Application</title>
+    <style>
+    #game{
+      position: relative;
+      width: 1080px;
+      height: 1756px;
+      overflow: hidden;
+      transform-origin: 0 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+    }
+    #canvas{
+      margin-top: -343px;
+    }
+    </style>
   </head>
   <body style="background-color: lightslategray;">
     <script src="dist/bundle.js"></script>
+    <script src="index.css"></script>
 
     <div id='game'>
-      <canvas id='canvas' style="scale:0.5; margin-top:-400px;">
+      <canvas id='canvas' style="scale:0.5; margin-top:-400px;"/>
     </div>
   </body>
 </html>

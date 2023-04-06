@@ -7,7 +7,7 @@
     gameTitle: "Fruit Bloxx",
     gameCycle:1000,
     sound : true,
-    omitSounds: true,
+    omitSounds: false,
     baseURL : ''
   };
 

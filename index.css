@@ -1,0 +1,8 @@
+#game{
+    position: relative;
+    top: 40px;
+    width: 1080px;
+    height: 1756px;
+    overflow: hidden;
+    transform-origin: 0 0;
+  }
