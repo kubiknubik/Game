@@ -71,7 +71,6 @@ export class GameLoader {
 
       app.stage.addChild(this.fruitBloxx);
 
-
       this.fruitBloxx.playIntro();
 
       this.symbol = new ReelSymbol();
