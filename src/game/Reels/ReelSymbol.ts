@@ -11,8 +11,9 @@ import GameFonts from "../core/Fonts";
 import { getStaticTexture } from "../core/helpers";
 import { SymbolData, SymbolState } from "../types/GameTypes";
 import GameSounds from "../GameSounds";
+import { GameContainer } from "../../core/GameContainer";
 
-export class ReelSymbol extends Container {
+export class ReelSymbol extends GameContainer<SymbolState> {
 
    private baseSpine!: Spine;
    private winFrame!: PIXI.Sprite;
@@ -29,7 +30,7 @@ export class ReelSymbol extends Container {
    public dropDelay: number = 0;
 
    constructor() {
-      super();
+      super( {isWinSymbol: false });
       this.addDisplayObjects();
       //this.symbol.interactive = true;
       this.eventData = {};

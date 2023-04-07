@@ -40,7 +40,7 @@ export  class FruitBloxx extends Container {
    constructor() {
       super();
       this.setupDisplayObjects();
-      this.webSocketManager = new WebSocketManager();   
+      this.webSocketManager = new WebSocketManager("");   
       GameMediator.on(GameEvent.ReelsCleared, this.onSpinStop);
       GameMediator.on(GameEvent.DropStop, this.onDropStop);
       GameMediator.on(GameEvent.FillStop, this.onFillStop);
