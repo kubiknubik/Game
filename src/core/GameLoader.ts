@@ -5,6 +5,7 @@ import { FruitBloxx } from "../game/FruitBloxx";
 import { ReelSymbol } from "../game/Reels/ReelSymbol";
 import GameSounds from "../game/GameSounds";
 import { SoundTypes } from "../game/types/enums";
+import GamePopup from "../game/GamePopup";
 
 export var app: Application;
 
@@ -70,6 +71,8 @@ export class GameLoader {
       this.fruitBloxx = new FruitBloxx();
 
       app.stage.addChild(this.fruitBloxx);
+
+      var popup = new GamePopup(app.stage)
 
       this.fruitBloxx.playIntro();
 

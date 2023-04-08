@@ -13,8 +13,12 @@ export function getStaticTexture(key:string){
 }
 
 export function getDisplayAmount(amount:number){
-return getCurrency()+amount;
+return getCurrency()+formatNumber(amount,2);
 }
+
+function formatNumber(num: number,digit:number): string {
+    return num.toFixed(digit);
+  }
 
 export function translate(text:string){
 return text;
