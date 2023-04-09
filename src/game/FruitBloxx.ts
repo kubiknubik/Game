@@ -36,11 +36,10 @@ export  class FruitBloxx extends Container {
    private currentBet!: number;
    private freeSpins: number = 0;
    private removeCount: number = 0;
-   private webSocketManager!: any;
    constructor() {
       super();
       this.setupDisplayObjects();
-      this.webSocketManager = new WebSocketManager("");   
+    
       GameMediator.on(GameEvent.ReelsCleared, this.onSpinStop);
       GameMediator.on(GameEvent.DropStop, this.onDropStop);
       GameMediator.on(GameEvent.FillStop, this.onFillStop);

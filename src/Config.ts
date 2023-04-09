@@ -8,7 +8,8 @@
     gameCycle:1000,
     sound : true,
     omitSounds: false,
-    baseURL : ''
+    baseURL : '',
+    gameUrl:"ws://localhost:5098"
   };
 
   export default GameConfig;

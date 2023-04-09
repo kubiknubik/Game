@@ -1,4 +1,9 @@
 export enum GameEvent {
+    LoadComplete="load_complete",
+    Login="login",
+    SpinRequest = "spin_request",
+    SpinResult = "spin_result",
+
     SpinStop = "SpinStop",
     SymbolStop = "SymbolStop",
     DropStop = "DropStop",

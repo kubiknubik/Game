@@ -1,3 +1,5 @@
+import { GameMediator } from "../game/mediator/Mediator";
+
 export class WebSocketManager {
     private socket!: WebSocket;
     private readonly url: string;
@@ -10,11 +12,13 @@ export class WebSocketManager {
       this.socket = new WebSocket(this.url);
   
       this.socket.onopen = (event: Event) => {
-        console.log('WebSocket connection opened');
+        const dataToSend = { userToken:"token"}
+         this.sendData("login",dataToSend)
       };
   
-      this.socket.onmessage = (event: MessageEvent) => {
-        console.log(`Received message: ${event.data}`);
+      this.socket.onmessage = (event: MessageEvent) => { 
+        var msg = JSON.parse(event.data); 
+        GameMediator.emit(msg.Command,msg.Data);
       };
   
       this.socket.onerror = (event: Event) => {
@@ -24,6 +28,12 @@ export class WebSocketManager {
       this.socket.onclose = (event: CloseEvent) => {
         console.log('WebSocket connection closed:', event);
       };
+    }
+
+    public sendData(cmd:string,dt:object):void{
+         const msg = {command:cmd, data:dt};
+ 
+         this.socket.send(JSON.stringify(msg))
     }
   
     public send(data: string): void {
