@@ -29,7 +29,12 @@ export class MainGame {
 
     private SpinResult = (evt:any) => {
         console.log(evt);
-        this.fruitBloxx.updateGameState(evt)
+
+        if(evt.error){
+         alert("error")
+        }else{
+            this.fruitBloxx.updateGameState(evt)
+        }
     }
 
     private StartGame = (evt: any) => {
@@ -61,10 +66,11 @@ export class MainGame {
 
         this.symbol.on("click", () => {
             GameSounds.playSound(SoundTypes.ReelStart);
-            this.fruitBloxx.performSpin();
+            this.fruitBloxx.data=null;
+            this.fruitBloxx.performSpin();         
 
-            const message = { betAmount:1000,RoomId:7};
-            this.webSocketManager.sendData(GameEvent.SpinRequest,{});
+            const message = { betAmount:700,RoomId:7};
+            this.webSocketManager.sendData(GameEvent.SpinRequest,message);
         });
         this.fruitBloxx.addChild(this.symbol)
     }

@@ -12,8 +12,7 @@ export class WebSocketManager {
       this.socket = new WebSocket(this.url);
   
       this.socket.onopen = (event: Event) => {
-        const dataToSend = { userToken:"token"}
-         this.sendData("login",dataToSend)
+        
       };
   
       this.socket.onmessage = (event: MessageEvent) => { 

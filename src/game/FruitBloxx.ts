@@ -26,7 +26,7 @@ export  class FruitBloxx extends Container {
    //state
    private type: GameType = GameType.Normal;
    private spinComplete: boolean = false;
-   private data: any = null;
+   public data: any = null;
    private wsIndex = 0;
    private filledCount: number = 0;
    private isBonusGame: boolean = false;
