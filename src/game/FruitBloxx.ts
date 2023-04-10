@@ -143,7 +143,7 @@ export  class FruitBloxx extends Container {
             for (let j = 0; j < stops[i].ws.length; j++) {
                console.log(stops[i].ws)
                for (let k = 0; k < stops[i].ws[j].length; k++) {
-                  amount += stops[i].ws[j][k].win_amount;
+                  amount += stops[i].ws[j][k].WinAmount;
                }
             }
          }
@@ -171,7 +171,7 @@ export  class FruitBloxx extends Container {
       this.data = data;
       this.spinIndex = 0;
       this.currentBet = Config.defaultBet;
-      this.isBonusGame = this.data.spin_results.results_ex.length > 1;
+      this.isBonusGame = this.data.SpinResults.ResultsEx.length > 1;
       if (this.spinComplete) {
          this.setResult();
       }
@@ -250,8 +250,8 @@ export  class FruitBloxx extends Container {
 
    public onDropStop = (evt: any) => {
       if (evt.id === ReelsConfig.ColumnSymbolCount - 1) {
-         let ws = this.data.spin_results.results_ex[this.spinIndex].ws;
-         let config = this.data.spin_results.results_ex[this.spinIndex].slot_config;
+         let ws = this.data.SpinResults.ResultsEx[this.spinIndex].ws;
+         let config = this.data.SpinResults.ResultsEx[this.spinIndex].slot_config;
          if (ws.length > 0) {
             this.showWin(ws, config);
          } else {
@@ -270,8 +270,8 @@ export  class FruitBloxx extends Container {
       this.filledCount++
       if (this.filledCount === ReelsConfig.ColumnSymbolCount) {
          this.filledCount = 0;
-         let ws = this.data.spin_results.results_ex[this.spinIndex].ws;
-         let reelSet = this.data.spin_results.results_ex[this.spinIndex].slot_config;
+         let ws = this.data.SpinResults.ResultsEx[this.spinIndex].ws;
+         let reelSet = this.data.SpinResults.ResultsEx[this.spinIndex].slot_config;
          if (ws.length > this.wsIndex) {
             setTimeout(() => {
                this.showWin(ws, reelSet)
@@ -294,9 +294,9 @@ export  class FruitBloxx extends Container {
       this.reelContainer.setAlphaToBoard();
 
       for (let z = 0; z < currWS.length; z++) {
-         this.reelContainer.setWinSymbols(currWS[z].idxs, currWS[z].win_amount);
-         this.removeCount += currWS[z].idxs.length;
-         this.currentWin += currWS[z].win_amount;
+         this.reelContainer.setWinSymbols(currWS[z].Idxs, currWS[z].WinAmount);
+         this.removeCount += currWS[z].Idxs.length;
+         this.currentWin += currWS[z].WinAmount;
       }
 
       this.spinWin += this.currentWin;
@@ -356,8 +356,8 @@ export  class FruitBloxx extends Container {
          return;
       }
 
-      if (this.data.spin_results.results_ex[this.spinIndex].extra_free_spins) {
-         this.freeSpins = this.data.spin_results.results_ex[this.spinIndex].extra_free_spins;
+      if (this.data.SpinResults.ResultsEx[this.spinIndex].extra_free_spins) {
+         this.freeSpins = this.data.SpinResults.ResultsEx[this.spinIndex].extra_free_spins;
          this.header.addFreeSpins(this.freeSpins);
       } else {
          this.freeSpins = 0
@@ -374,7 +374,7 @@ export  class FruitBloxx extends Container {
          return;
       }
 
-      if (this.data.spin_results.results_ex.length === this.spinIndex) {
+      if (this.data.SpinResults.ResultsEx.length === this.spinIndex) {
          this.freeSpinEnd();
          return;
       }
@@ -383,15 +383,15 @@ export  class FruitBloxx extends Container {
    }
 
    public setResult() {
-      let result = this.data.spin_results.results_ex[this.spinIndex];
-      this.reelContainer.setupReelState(result.spin_res, result.slot_config, this.spinIndex === 0);
+      let result = this.data.SpinResults.ResultsEx[this.spinIndex];
+      this.reelContainer.setupReelState(result.SpinRes, result.slot_config, this.spinIndex === 0);
       this.reelContainer.finishSpin();
    }
 
    public freeSpinPopupShow = () => {
       this.reelContainer.showBonusWinAnimations();
       setTimeout(() => {
-         var freeSpins = this.data.spin_results.results_ex[0].extra_free_spins;
+         var freeSpins = this.data.SpinResults.ResultsEx[0].extra_free_spins;
          GameMediator.emit(GameEvent.ShowPopup, { type: PopupType.FreeSpinStart, data: { count: freeSpins } })
          this.header.showFreeSpins(freeSpins);
       }, ReelsConfig.FreeSpinStartDelay)
