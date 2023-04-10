@@ -29,7 +29,6 @@ export class MainGame {
 
     private SpinResult = (evt:any) => {
         console.log(evt);
-
         if(evt.error){
          alert("error")
         }else{
@@ -69,7 +68,7 @@ export class MainGame {
             this.fruitBloxx.data=null;
             this.fruitBloxx.performSpin();         
 
-            const message = { betAmount:700,RoomId:7};
+            const message = { betAmount:1,RoomId:7};
             this.webSocketManager.sendData(GameEvent.SpinRequest,message);
         });
         this.fruitBloxx.addChild(this.symbol)
