@@ -9,7 +9,7 @@
     sound : true,
     omitSounds: false,
     baseURL : '',
-    gameUrl:"ws://localhost:5098?token=1234"
+    gameUrl:"ws://localhost:5087?token=1234"
   };
 
   export default GameConfig;
