@@ -15,6 +15,7 @@ export class MainGame {
     private webSocketManager!: WebSocketManager;
     public fruitBloxx!: FruitBloxx;
     public symbol!: ReelSymbol;
+    public symbol1!: ReelSymbol;
     constructor() {
         this.webSocketManager = new WebSocketManager(GameConfig.gameUrl);
         GameMediator.on(GameEvent.LoadComplete, this.loadComplete);
@@ -71,6 +72,23 @@ export class MainGame {
             const message = { betAmount:1,RoomId:7};
             this.webSocketManager.sendData(GameEvent.SpinRequest,message);
         });
+
+        this.symbol1 = new ReelSymbol();
+        this.symbol1.setSymbol(5);
+        this.symbol1.x = 800;
+        this.symbol1.y = 1550;
+        this.symbol1.interactive = true;
+
+        this.symbol1.on("click", () => {
+            GameSounds.playSound(SoundTypes.ReelStart);
+            this.fruitBloxx.data=null;
+            this.fruitBloxx.performSpin();         
+
+            const message = { betAmount:1,RoomId:7, stops:[ 42, 5, 19, 79, 64]};
+            this.webSocketManager.sendData(GameEvent.SpinRequest,message);
+        });
+        
         this.fruitBloxx.addChild(this.symbol)
+        this.fruitBloxx.addChild(this.symbol1)
     }
 }
