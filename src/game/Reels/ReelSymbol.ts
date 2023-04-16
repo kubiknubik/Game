@@ -32,15 +32,8 @@ export class ReelSymbol extends GameContainer<SymbolState> {
    constructor() {
       super( {isWinSymbol: false });
       this.addDisplayObjects();
-      //this.symbol.interactive = true;
       this.eventData = {};
       this.state = { isWinSymbol: false }
-
-      // this.symbol.on("click",()=>{ 
-      //    this.state.isWinSymbol = true;
-      //    GameSounds.playSound(SoundTypes.ReelStart);
-      //    this.setWinAnimation();
-      //  }) 
    }
 
    private addDisplayObjects() {

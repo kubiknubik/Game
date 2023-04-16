@@ -60,35 +60,41 @@ export class MainGame {
 
         this.symbol = new ReelSymbol();
         this.symbol.setSymbol(2);
-        this.symbol.x = 400;
+        this.symbol.x = 360;
         this.symbol.y = 1550;
         this.symbol.interactive = true;
 
-        this.symbol.on("click", () => {
-            GameSounds.playSound(SoundTypes.ReelStart);
-            this.fruitBloxx.data=null;
-            this.fruitBloxx.performSpin();         
-
-            const message = { betAmount:1,RoomId:7};
-            this.webSocketManager.sendData(GameEvent.SpinRequest,message);
-        });
-
+        this.symbol.on("click", this.spin1);
+        this.symbol.on("tap", this.spin1);
+     
         this.symbol1 = new ReelSymbol();
         this.symbol1.setSymbol(5);
-        this.symbol1.x = 800;
+        this.symbol1.x = 720;
         this.symbol1.y = 1550;
         this.symbol1.interactive = true;
 
-        this.symbol1.on("click", () => {
-            GameSounds.playSound(SoundTypes.ReelStart);
-            this.fruitBloxx.data=null;
-            this.fruitBloxx.performSpin();         
-
-            const message = { betAmount:1,RoomId:7, stops:[ 42, 5, 19, 79, 64]};
-            this.webSocketManager.sendData(GameEvent.SpinRequest,message);
-        });
+      
+        this.symbol1.on("click", this.spin2);
+        this.symbol1.on("tap", this.spin2);
         
         this.fruitBloxx.addChild(this.symbol)
         this.fruitBloxx.addChild(this.symbol1)
+    }
+
+    private spin2 = ()=>{
+        const message = { betAmount:1,RoomId:7, stops:[ 42, 5, 19, 79, 64]};
+        this.spin(message);
+    }
+
+    private spin1= ()=>{
+        const message = { betAmount:1,RoomId:7};
+        this.spin(message);
+    }
+
+    private spin= (message:any)=>{
+        GameSounds.playSound(SoundTypes.ReelStart);
+        this.fruitBloxx.data=null;
+        this.fruitBloxx.performSpin();      
+        this.webSocketManager.sendData(GameEvent.SpinRequest,message);
     }
 }
