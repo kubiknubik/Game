@@ -8,22 +8,26 @@ import GameSounds from "./game/GameSounds";
 import { SoundTypes } from "./game/types/enums";
 import { GameMediator } from "./game/mediator/Mediator";
 import { GameEvent } from "./game/events/Events";
+import { CandyCrush } from "./MatchThree/CandyCrush";
 
 
 var app: Application;
 export class MainGame {
     private webSocketManager!: WebSocketManager;
+    private CandyCrush! :CandyCrush;
     public fruitBloxx!: FruitBloxx;
     public symbol!: ReelSymbol;
     public symbol1!: ReelSymbol;
     constructor() {
-        this.webSocketManager = new WebSocketManager(GameConfig.gameUrl);
-        GameMediator.on(GameEvent.LoadComplete, this.loadComplete);
+       
+        //GameMediator.on(GameEvent.LoadComplete, this.loadComplete);
+        GameMediator.on(GameEvent.LoadComplete, this.StartGame); //ToDo remove
         GameMediator.on(GameEvent.Login, this.StartGame);
         GameMediator.on(GameEvent.SpinResult, this.SpinResult);
     }
 
     private loadComplete = () => {
+        this.webSocketManager = new WebSocketManager(GameConfig.gameUrl);
         console.log("load complete")
         this.webSocketManager.connect();
     }
@@ -50,35 +54,41 @@ export class MainGame {
             resizeTo: document.getElementById("game") as any
         });
 
-        this.fruitBloxx = new FruitBloxx();
 
-        app.stage.addChild(this.fruitBloxx);
+         this.CandyCrush = new CandyCrush();
+         this.CandyCrush.x =100;
+         this.CandyCrush.y = 500;
+         app.stage.addChild(this.CandyCrush);
+        // this.fruitBloxx = new FruitBloxx();
 
-        var popup = new GamePopup(app.stage)
+        // app.stage.addChild(this.fruitBloxx);
 
-        this.fruitBloxx.playIntro();
 
-        this.symbol = new ReelSymbol();
-        this.symbol.setSymbol(2);
-        this.symbol.x = 360;
-        this.symbol.y = 1550;
-        this.symbol.interactive = true;
+        // var popup = new GamePopup(app.stage)
 
-        this.symbol.on("click", this.spin1);
-        this.symbol.on("tap", this.spin1);
+        // this.fruitBloxx.playIntro();
+
+        // this.symbol = new ReelSymbol();
+        // this.symbol.setSymbol(2);
+        // this.symbol.x = 360;
+        // this.symbol.y = 1550;
+        // this.symbol.interactive = true;
+
+        // this.symbol.on("click", this.spin1);
+        // this.symbol.on("tap", this.spin1);
      
-        this.symbol1 = new ReelSymbol();
-        this.symbol1.setSymbol(5);
-        this.symbol1.x = 720;
-        this.symbol1.y = 1550;
-        this.symbol1.interactive = true;
+        // this.symbol1 = new ReelSymbol();
+        // this.symbol1.setSymbol(5);
+        // this.symbol1.x = 720;
+        // this.symbol1.y = 1550;
+        // this.symbol1.interactive = true;
 
       
-        this.symbol1.on("click", this.spin2);
-        this.symbol1.on("tap", this.spin2);
+        // this.symbol1.on("click", this.spin2);
+        // this.symbol1.on("tap", this.spin2);
         
-        this.fruitBloxx.addChild(this.symbol)
-        this.fruitBloxx.addChild(this.symbol1)
+        // this.fruitBloxx.addChild(this.symbol)
+        // this.fruitBloxx.addChild(this.symbol1)
     }
 
     private spin2 = ()=>{

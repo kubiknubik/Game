@@ -7,7 +7,6 @@ import { ReelsBackground } from "./Reels/ReelsBackground";
 import { ReelsContainer } from "./Reels/ReelsContainer";
 import { ReelsHeader } from "./Reels/ReelsHeader";
 import { AnimationName, GameType, PopupType, SoundTypes } from "./types/enums";
-import { WebSocketManager } from "../connection/WebSocketManager";
 import { Container } from "pixi.js";
 import { Spine } from "pixi-spine";
 import GameFonts from "./core/Fonts";

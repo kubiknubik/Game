@@ -95,9 +95,11 @@ type SymbolState =
 
 type SymbolData =
 {
+  empty?:boolean
   reelId?: number,
   colIndex?: number,
-  event?: AnimationType
+  event?: AnimationType,
+  symbolId?:number;
 }
 
 type PopupInfo={
